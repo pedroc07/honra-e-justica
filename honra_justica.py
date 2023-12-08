@@ -272,7 +272,7 @@ def templo(P1):
     P1.vitorias += 1
 
 def jogo():
-    print("\nHonra e Vingança\n")
+    print("\nHonra e Justiça\n")
     print("[1]NEW GAME")
     print("[2]CONTINUE")
     opcao = input("\nEscolha uma opção: ")
