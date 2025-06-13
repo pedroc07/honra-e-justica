@@ -302,7 +302,7 @@ def jogo():
         if P1.viu_dragao:
             texto += "[4]Dragão\n"
         if P1.ouviu_templo:
-            texto += "[5]Templo budista"
+            texto += "[5]Templo budista\n"
         if P1.zerou:
             texto += "[6]Epílogo"
         escoha_jogo = input(f"{texto}\nEscolha: ")
