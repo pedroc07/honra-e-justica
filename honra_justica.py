@@ -212,7 +212,7 @@ def batalha(P1, E1):
             print(f"\n{E1.nome} lv {E1.level}")
         else:
             print(f"\n{E1.nome} lv {E1.level}\nHP: {E1.hp}/{E1.hp_max}")
-        print(f"{self.alcunha}{P1.nome} lv {P1.level}\nHP: {P1.hp}/{P1.hp_max}")
+        print(f"{P1.alcunha}{P1.nome} lv {P1.level}\nHP: {P1.hp}/{P1.hp_max}")
         movimento = input(moves)
         if movimento.upper() == 'Z':
             P1.ataque_rapido(E1)
