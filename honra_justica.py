@@ -3,8 +3,6 @@ import pickle
 import time
 import os
 
-#EDITAR O ACESSO AO TEMPLO E AO DRAGÃO
-
 class Samurai:
     def __init__(self, nome, level, xp, hp, atk, dfs, vel, ataques=[1, 2, 3]):
         self.level = level
