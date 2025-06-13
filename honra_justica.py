@@ -5,9 +5,11 @@ import time
 #EDITAR O ACESSO AO TEMPLO E AO DRAGÃO
 
 class Samurai:
-    def __init__(self, nome, level, xp, hp, atk, dfs, vel, ataques=[1, 2, 3]):
+    def __init__(self, nome, alcunha, campeao, level, xp, hp, atk, dfs, vel, ataques=[1, 2, 3]):
         self.level = level
         self.nome = nome  # nome do jogador
+        self.alcunha = alcunha
+        campeao = False
         self.xp = xp  # relativo à experiência do jogador
         self.katana = 0  # itens sob posse do jogador
         self.grana = 10  # dinheiro do jogador
@@ -269,6 +271,8 @@ def templo(P1):
     SaitoBenkei = Samurai("Saito Benkei", 18, 3000, 110, 15, 15, 15, [1, 2, 3, 6, 6, 6, 6])
     batalha(P1, SaitoBenkei)
     print("Monge C: Meus parabéns, garoto. Você se mostrou digno da espada que empunha.")
+    print("Monge C: Você conseguiu traçar sua estrada rumo à iluminação com competência e dignidade.")
+    
     P1.vitorias += 1
 
 def jogo():
