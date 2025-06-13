@@ -231,7 +231,7 @@ def batalha(P1, E1):
         exit()
     else:
         E1.hp = 0
-        print(f"\n{self.alcunha}{P1.nome} derrotou {E1.nome}")
+        print(f"\n{P1.alcunha}{P1.nome} derrotou {E1.nome}")
         P1.xp += E1.xp
         P1.upar()
         if P1.vitorias == 50:
