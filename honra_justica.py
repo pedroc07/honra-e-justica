@@ -5,11 +5,11 @@ import time
 #EDITAR O ACESSO AO TEMPLO E AO DRAGÃO
 
 class Samurai:
-    def __init__(self, nome, alcunha, campeao, level, xp, hp, atk, dfs, vel, ataques=[1, 2, 3]):
+    def __init__(self, nome, level, xp, hp, atk, dfs, vel, ataques=[1, 2, 3]):
         self.level = level
         self.nome = nome  # nome do jogador
-        self.alcunha = alcunha
-        campeao = False
+        self.alcunha = ""
+        zerou = False
         self.xp = xp  # relativo à experiência do jogador
         self.katana = 0  # itens sob posse do jogador
         self.grana = 10  # dinheiro do jogador
@@ -41,7 +41,7 @@ class Samurai:
         self.vitorias += 1
 
     def imprime_stats(self):
-        print(f'\nNome: {self.nome}')
+        print(f'\nNome: {self.alcunha}{self.nome}')
         print(f'Level: {self.level}')
         print(f'Experiência: {self.xp}')
         print(f'HP: {self.hp}/{self.hp_max}')
@@ -268,11 +268,15 @@ def templo(P1):
     MongeC = Samurai("Monge C", 10, 1000, 80, 13, 13, 13, [1, 2, 3, 3, 6, 6])
     batalha(P1, MongeC)
     print("Monge C: Você é forte, de fato. Porém você não é páreo para Saito Benkei, nosso maior guerreiro.")
-    SaitoBenkei = Samurai("Saito Benkei", 18, 3000, 110, 15, 15, 15, [1, 2, 3, 6, 6, 6, 6])
+    print("Benkei: Derroto e capturo as espadas dos samurais indignos de carregá-las. Já tenho 999, será você digno, garoto?")
+    SaitoBenkei = Samurai("Benkei", 18, 3000, 110, 15, 15, 15, [1, 2, 3, 6, 6, 6, 6])
     batalha(P1, SaitoBenkei)
-    print("Monge C: Meus parabéns, garoto. Você se mostrou digno da espada que empunha.")
-    print("Monge C: Você conseguiu traçar sua estrada rumo à iluminação com competência e dignidade.")
-    
+    print("Benkei: Parabéns, garoto. Você se mostrou digno da espada que empunha.")
+    print("Benkei: Você provou sua força, honra e dignidade mediante terríveis adversidades.")
+    print("Benkei: Você concluiu sua missão e agora pode repousar ou continuar procurando desafios no campo de batalha.")
+
+    P1.alcunha = "Kensei "
+    P1.zerou = True
     P1.vitorias += 1
 
 def jogo():
@@ -350,7 +354,7 @@ def jogo():
                             print(
                                 "A mulher corta a sua boca de forma que você fica igual a ela"
                             )
-                            P1.nome = "Boca Cortada " + P1.nome
+                            P1.alcunha = "Boca Cortada "
                             P1.escolhas_fase1.remove(5)
                         elif opcao_mulher2 == '2':
                             print("A mulher corta você ao meio")
@@ -407,4 +411,10 @@ def jogo():
             
         elif escoha_jogo == "5" and P1.ouviu_templo:
             templo(P1)
+
+       elif escoha_jogo == "6" and P1.zerou:
+            print("Em uma humilde cabana numa vila do interior, repousa com glória um antigo herói que se fez conhecido pela lendas populares.")
+            print("O sorriso inocente e os cabelos brancos ocultam os grandiosos feitos de sua vida antiga.")
+            print("FIM")
+            jogo = False
 jogo()
