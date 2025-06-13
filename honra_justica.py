@@ -416,7 +416,7 @@ def jogo():
             templo(P1)
 
         elif escoha_jogo == "6" and P1.zerou:
-            os.system('clear')
+            #os.system('clear')
             print("Em uma humilde cabana numa vila do interior, repousa com glória um antigo herói que se fez conhecido pela lendas populares.")
             print("O sorriso inocente e os cabelos brancos ocultam os grandiosos feitos de sua vida antiga.")
             print("Um verdadeiro santo.")
