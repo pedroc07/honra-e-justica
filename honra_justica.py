@@ -9,7 +9,7 @@ class Samurai:
         self.level = level
         self.nome = nome  # nome do jogador
         self.alcunha = ""
-        zerou = False
+        self.zerou = False
         self.xp = xp  # relativo à experiência do jogador
         self.katana = 0  # itens sob posse do jogador
         self.grana = 10  # dinheiro do jogador
