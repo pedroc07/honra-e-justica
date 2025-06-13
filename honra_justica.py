@@ -302,6 +302,8 @@ def jogo():
             texto += "[4]Dragão\n"
         if P1.ouviu_templo:
             texto += "[5]Templo budista"
+        if P1.zerou:
+            texto += "[6]Epílogo"
         escoha_jogo = input(f"{texto}\nEscolha: ")
         if escoha_jogo == "1":
             if P1.historia == 0:
@@ -412,7 +414,7 @@ def jogo():
         elif escoha_jogo == "5" and P1.ouviu_templo:
             templo(P1)
 
-       elif escoha_jogo == "6" and P1.zerou:
+        elif escoha_jogo == "6" and P1.zerou:
             print("Em uma humilde cabana numa vila do interior, repousa com glória um antigo herói que se fez conhecido pela lendas populares.")
             print("O sorriso inocente e os cabelos brancos ocultam os grandiosos feitos de sua vida antiga.")
             print("FIM")
