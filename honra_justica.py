@@ -1,6 +1,7 @@
 import random
 import pickle
 import time
+import os
 
 #EDITAR O ACESSO AO TEMPLO E AO DRAGÃO
 
@@ -37,7 +38,7 @@ class Samurai:
             self.dfs += random.randint(1, 3)
             self.vel += random.randint(1, 3)
             self.hp_max += random.randint(2, 5)
-            print(f"{self.nome} upou para o nível {self.level}")
+            print(f"{self.alcunha}{self.nome} upou para o nível {self.level}")
         self.vitorias += 1
 
     def imprime_stats(self):
@@ -62,19 +63,19 @@ class Samurai:
             print(f"{self.nome} perdeu {inimigo.atk} de vida")
         elif inimigo.escolha == 1:
             inimigo.hp -= self.atk
-            print(f"{self.nome} realizou um ataque rápido")
+            print(f"{self.alcunha}{self.nome} realizou um ataque rápido")
             print(
                 f"{inimigo.nome} tentou um ataque forte e perdeu {self.atk} de vida"
             )
         elif inimigo.escolha == 3 or inimigo.escolha == 6:
-            print(f"{self.nome} tentou um ataque rápido")
+            print(f"{self.alcunha}{self.nome} tentou um ataque rápido")
             print(f"{inimigo.nome} defendeu e o empurrou de volta")
             self.hp -= self.atk//2
         elif inimigo.escolha == 4:
             #ataque exclusivo do dragão
             print(f"{inimigo.nome} bradou chamas")
             print(
-                f"{self.nome} tentou um ataque rápido e perdeu {int(inimigo.atk*1.5)} de vida"
+                f"{self.alcunha}{self.nome} tentou um ataque rápido e perdeu {int(inimigo.atk*1.5)} de vida"
             )
             self.hp -= int(inimigo.atk * 1.5)
         elif inimigo.escolha == 5:
@@ -82,13 +83,13 @@ class Samurai:
             if acerto == 1:
                 print(f"{inimigo.nome} deu um tiro mas errou")
                 inimigo.hp -= self.atk
-                print(f"{self.nome} realizou um ataque rápido")
+                print(f"{self.alcunha}{self.nome} realizou um ataque rápido")
                 print(f"{inimigo.nome} perdeu {self.atk} de vida")
             else:
                 print(
                     f"{inimigo.nome} deu um tiro"
                 )
-                print(f"{self.nome} tentou um ataque rápido e perdeu 10 de vida")
+                print(f"{self.alcunha}{self.nome} tentou um ataque rápido e perdeu 10 de vida")
                 self.hp -= 10
 
     def ataque_forte(self, inimigo):
@@ -97,18 +98,18 @@ class Samurai:
             self.hp -= inimigo.atk
             print(f"{inimigo.nome} realizou um ataque rápido")
             print(
-                f"{self.nome} tentou um ataque forte e perdeu {inimigo.atk} de vida"
+                f"{self.alcunha}{self.nome} tentou um ataque forte e perdeu {inimigo.atk} de vida"
             )
         elif inimigo.escolha == 1:
             inimigo.hp -= int(self.atk * 1.5)
-            print(f"{self.nome} realizou um ataque forte")
+            print(f"{self.alcunha}{self.nome} realizou um ataque forte")
             print(f"{inimigo.nome} perdeu {int(self.atk * 1.5)} de vida")
             self.hp -= int(inimigo.atk * 1.5)
             print(f"{inimigo.nome} realizou um ataque forte")
-            print(f"{self.nome} perdeu {int(inimigo.atk * 1.5)} de vida")
+            print(f"{self.alcunha}{self.nome} perdeu {int(inimigo.atk * 1.5)} de vida")
         elif inimigo.escolha == 3:
             inimigo.hp -= self.atk - inimigo.dfs // 2
-            print(f"{self.nome} realizou um ataque forte")
+            print(f"{self.alcunha}{self.nome} realizou um ataque forte")
             print(
                 f"{inimigo.nome} tentou defender mas perdeu {self.atk//2} de vida"
             )
@@ -116,7 +117,7 @@ class Samurai:
             #ataque exclusivo do dragão
             print(f"{inimigo.nome} bradou chamas")
             print(
-                f"{self.nome} tentou um ataque forte e perdeu {int(inimigo.atk * 1.5)} de vida"
+                f"{self.alcunha}{self.nome} tentou um ataque forte e perdeu {int(inimigo.atk * 1.5)} de vida"
             )
             self.hp -= int(inimigo.atk * 1.5)
         elif inimigo.escolha == 5:
@@ -124,12 +125,12 @@ class Samurai:
             if acerto == 1:
                 print(f"{inimigo.nome} deu um tiro mas errou")
                 inimigo.hp -= int(self.atk * 1.5)
-                print(f"{self.nome} realizou um ataque forte")
+                print(f"{self.alcunha}{self.nome} realizou um ataque forte")
                 print(f"{inimigo.nome} perdeu {int(self.atk * 1.5)} de vida")
             else:
                 print(f"{inimigo.nome} deu um tiro")
                 print(
-                    f"{self.nome} tentou um ataque forte e perdeu 10 de vida")
+                    f"{self.alcunha}{self.nome} tentou um ataque forte e perdeu 10 de vida")
                 self.hp -= 10
 
     def defesa(self, inimigo):
@@ -137,21 +138,21 @@ class Samurai:
         if inimigo.escolha == 2:
             inimigo.hp -= inimigo.atk//2
             print(f"{inimigo.nome} tentou um ataque rápido")
-            print(f"{self.nome} defendeu e o empurrou de volta")
+            print(f"{self.alcunha}{self.nome} defendeu e o empurrou de volta")
         elif inimigo.escolha == 1 or inimigo.escolha == 6:
             self.hp -= inimigo.atk - self.dfs // 2
             print(f"{inimigo.nome} realizou um ataque forte")
             print(
-                f"{self.nome} tentou defender mas perdeu {inimigo.atk//2} de vida"
+                f"{self.alcunha}{self.nome} tentou defender mas perdeu {inimigo.atk//2} de vida"
             )
         elif inimigo.escolha == 3:
-            print(f"{self.nome} defendeu")
+            print(f"{self.alcunha}{self.nome} defendeu")
             print(f"{inimigo.nome} defendeu")
         elif inimigo.escolha == 4:
             #ataque exclusivo do dragão
             print(f"{inimigo.nome} bradou chamas")
             print(
-                f"{self.nome} tentou defender mas perdeu {int(inimigo.atk*1.5)} de vida"
+                f"{self.alcunha}{self.nome} tentou defender mas perdeu {int(inimigo.atk*1.5)} de vida"
             )
             self.hp -= int(inimigo.atk * 1.5)
         elif inimigo.escolha == 5:
@@ -160,42 +161,42 @@ class Samurai:
                 print(f"{inimigo.nome} deu um tiro mas errou")
             else:
                 print(f"{inimigo.nome} deu um tiro")
-                print(f"{self.nome} tentou defender mas perdeu 10 de vida")
+                print(f"{self.alcunha}{self.nome} tentou defender mas perdeu 10 de vida")
                 self.hp -= 10
 
     def acenar(self, inimigo):
       if inimigo.nome == "Kappa Maligno":
-        print(f"{self.nome} acenou")
+        print(f"{self.alcunha}{self.nome} acenou")
         print(f"{inimigo.nome} acenou deixando derramar a água em sua cabeça")
         inimigo.hp -= inimigo.hp
       elif inimigo.escolha == 2:
             self.hp -= inimigo.atk
             print(f"{inimigo.nome} tentou um ataque rápido")
-            print(f"{self.nome} acenou e perdeu {inimigo.atk} de vida")
+            print(f"{self.alcunha}{self.nome} acenou e perdeu {inimigo.atk} de vida")
       elif inimigo.escolha == 1 or inimigo.escolha == 6:
             self.hp -= inimigo.atk
             print(f"{inimigo.nome} realizou um ataque forte")
             print(
-                f"{self.nome} acenou e perdeu {inimigo.atk} de vida"
+                f"{self.alcunha}{self.nome} acenou e perdeu {inimigo.atk} de vida"
             )
       elif inimigo.escolha == 3:
-            print(f"{self.nome} acenou")
+            print(f"{self.alcunha}{self.nome} acenou")
             print(f"{inimigo.nome} defendeu")
       elif inimigo.escolha == 4:
             #ataque exclusivo do dragão
             print(f"{inimigo.nome} bradou chamas")
             print(
-                f"{self.nome} acenou e perdeu {int(inimigo.atk*1.5)} de vida"
+                f"{self.alcunha}{self.nome} acenou e perdeu {int(inimigo.atk*1.5)} de vida"
             )
             self.hp -= int(inimigo.atk * 1.5)
       elif inimigo.escolha == 5:
             acerto = random.randint(1, 3)
             if acerto == 1:
                 print(f"{inimigo.nome} deu um tiro mas errou")
-                print(f"{self.nome} acenou")
+                print(f"{self.alcunha}{self.nome} acenou")
             else:
                 print(f"{inimigo.nome} deu um tiro")
-                print(f"{self.nome} acenou e perdeu 10 de vida")
+                print(f"{self.alcunha}{self.nome} acenou e perdeu 10 de vida")
                 self.hp -= 10
 
 def batalha(P1, E1):
@@ -211,7 +212,7 @@ def batalha(P1, E1):
             print(f"\n{E1.nome} lv {E1.level}")
         else:
             print(f"\n{E1.nome} lv {E1.level}\nHP: {E1.hp}/{E1.hp_max}")
-        print(f"{P1.nome} lv {P1.level}\nHP: {P1.hp}/{P1.hp_max}")
+        print(f"{self.alcunha}{P1.nome} lv {P1.level}\nHP: {P1.hp}/{P1.hp_max}")
         movimento = input(moves)
         if movimento.upper() == 'Z':
             P1.ataque_rapido(E1)
@@ -230,7 +231,7 @@ def batalha(P1, E1):
         exit()
     else:
         E1.hp = 0
-        print(f"\n{P1.nome} derrotou {E1.nome}")
+        print(f"\n{self.alcunha}{P1.nome} derrotou {E1.nome}")
         P1.xp += E1.xp
         P1.upar()
         if P1.vitorias == 50:
@@ -415,8 +416,9 @@ def jogo():
             templo(P1)
 
         elif escoha_jogo == "6" and P1.zerou:
+            os.system('clear')
             print("Em uma humilde cabana numa vila do interior, repousa com glória um antigo herói que se fez conhecido pela lendas populares.")
             print("O sorriso inocente e os cabelos brancos ocultam os grandiosos feitos de sua vida antiga.")
-            print("FIM")
+            print("Um verdadeiro santo.")
             jogo = False
 jogo()
